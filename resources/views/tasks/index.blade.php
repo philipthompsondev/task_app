@@ -13,10 +13,6 @@
             <x-primary-button class="mt-4">{{ __('New Task') }}</x-primary-button>
         </form>
 
-        <div class="mt-6 space-y-2">
-            @foreach ($tasks as $task)
-                <x-tasks.task :task="$task"></x-tasks.task>
-            @endforeach
-        </div>
+        <livewire:livewire-sort-table/>
     </div>
 </x-app-layout>
