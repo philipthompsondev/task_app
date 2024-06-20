@@ -33,12 +33,11 @@ class TaskController extends Controller
     {
         $validated = $request->validate([
             'task_name' => 'required|string|max:255',
-            'priority' => 'required|integer'
         ]);
 
         $task = new Task();
         $task->task_name = $validated['task_name'];
-        $task->priority = $validated['priority'];
+        $task->priority = Task::max('priority') + 1;
 
         $task->save();
 

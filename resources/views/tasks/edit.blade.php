@@ -7,7 +7,7 @@
                 name="task_name"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
             >{{ old('task_name', $task->task_name) }}</textarea>
-            <input type="hidden" id="priority" name="priority" value="2" />
+            <input type="hidden" id="priority" name="priority" value="{{ $task->priority }}" />
 
             <x-input-error :messages="$errors->get('task_name')" class="mt-2" />
             <div class="mt-4 space-x-2">

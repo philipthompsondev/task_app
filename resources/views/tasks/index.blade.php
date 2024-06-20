@@ -7,7 +7,6 @@
                 placeholder="{{ __('Enter a new task here.') }}"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
             >{{ old('task_name') }}</textarea>
-            <input type="hidden" id="priority" name="priority" value="1" />
 
             <x-input-error :messages="$errors->get('task_name')" class="mt-2" />
             <x-primary-button class="mt-4">{{ __('New Task') }}</x-primary-button>
