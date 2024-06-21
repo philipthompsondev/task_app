@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
 {
@@ -14,7 +14,8 @@ class TaskController extends Controller
     public function index()
     {
         return view('tasks.index', [
-            'tasks' => Task::all()
+            'tasks' => Task::all(),
+            'projects' => Project::all()
         ]);
     }
 
@@ -31,12 +32,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
-            'task_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'project_id' => 'nullable|integer',
         ]);
 
         $task = new Task();
-        $task->task_name = $validated['task_name'];
+        $task->name = $validated['name'];
+        $task->project_id = $validated['project_id'];
         $task->priority = Task::max('priority') + 1;
 
         $task->save();
@@ -58,7 +62,8 @@ class TaskController extends Controller
     public function edit(Task $task)
     {
         return view('tasks.edit', [
-            'task' => $task
+            'task' => $task,
+            'projects' => Project::all()
         ]);
     }
 
@@ -67,11 +72,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-//        Gate::authorize('update', $task);
-
         $validated = $request->validate([
-            'task_name' => 'required|string|max:255',
-            'priority' => 'required|integer'
+            'name' => 'required|string|max:255',
+            'project_id' => 'nullable|integer',
         ]);
 
         $task->update($validated);

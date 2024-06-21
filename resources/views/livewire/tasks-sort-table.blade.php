@@ -1,9 +1,14 @@
 
     <ul wire:sortable="updateTaskOrder" class="mt-4 divide-y-4">
         @foreach ($tasks as $task)
-            <li wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}" class="p-6 flex space-x-2 bg-white shadow-sm rounded-lg">
+            <li
+                wire:sortable.item="{{ $task->id }}"
+                wire:key="task-{{ $task->id }}"
+                class="p-6 flex space-x-2 bg-white shadow-sm rounded-lg"
+                style="background-color: {{ $task->project ? $task->project->color : ''}}"
+            >
                 <div class="flex-1">
-                    <p wire:sortable.handle class="">{{ $task->task_name }}</p>
+                    <p wire:sortable.handle class="">{{ $task->name }}</p>
                 </div>
 
                 <x-dropdown>

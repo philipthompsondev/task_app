@@ -6,7 +6,7 @@
             <input
                 type="text"
                 name="name"
-                value="{{ old('task_name', $project->name) }}"
+                value="{{ old('name', $project->name) }}"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
             >
 
@@ -16,6 +16,7 @@
             </div>
 
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-error :messages="$errors->get('color')" class="mt-2" />
             <div class="mt-4 space-x-2">
                 <x-primary-button>{{ __('Save') }}</x-primary-button>
                 <a href="{{ route('projects.index') }}">{{ __('Cancel') }}</a>
