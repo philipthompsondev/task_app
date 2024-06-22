@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Models\Task;
 use Livewire\Component;
 
-class LivewireSortTable extends Component
+class TasksSortTable extends Component
 {
     public $p;
     protected $queryString = ['p'];
