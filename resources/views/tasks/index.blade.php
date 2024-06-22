@@ -22,6 +22,24 @@
             <x-primary-button class="mt-4">{{ __('New Task') }}</x-primary-button>
         </form>
 
-        <livewire:livewire-sort-table/>
+        @if(!$projects->isEmpty())
+            <label for="selectProject">Filter tasks by project:</label>
+            <select
+                class="form-control"
+                id="selectProject"
+                name="project_id"
+                onChange="document.location.href = '/tasks?p=' + this.value"
+            >
+                <option value="">All Projects</option>
+                @foreach($projects as $project)
+                    <option
+                        value="{{$project->id}}"
+                        {{ isset($_GET['p']) && ($_GET['p'] == $project->id) ? "selected" : "" }}
+                    >{{ $project->name }}</option>
+                @endforeach
+            </select>
+        @endif
+
+        <livewire:livewire-sort-table />
     </div>
 </x-app-layout>

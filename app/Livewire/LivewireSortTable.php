@@ -7,6 +7,9 @@ use Livewire\Component;
 
 class LivewireSortTable extends Component
 {
+    public $p;
+    protected $queryString = ['p'];
+
     public function updateTaskOrder($tasks)
     {
         foreach ($tasks as $task) {
@@ -16,6 +19,12 @@ class LivewireSortTable extends Component
 
     public function render()
     {
-        return view('livewire.tasks-sort-table', ['tasks' => Task::orderBy('priority')->get()]);
+        if ($this->p == null || $this->p == "") {
+            $tasks = Task::orderBy('priority')->get();
+        } else {
+            $tasks = Task::orderBy('priority')->where('project_id', ($this->p))->get();
+        }
+
+        return view('livewire.tasks-sort-table', ['tasks' => $tasks]);
     }
 }
