@@ -9,6 +9,8 @@
                 placeholder="{{ __('Enter a new task name here.') }}"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md">
 
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+
             <div class="w-full mt-5">
                 @if(!$projects->isEmpty())
                     <label for="selectProject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">You may also select a project for the task:</label>
@@ -24,7 +26,6 @@
                 @endif
             </div>
 
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
             <x-primary-button class="mt-4">{{ __('Create Task') }}</x-primary-button>
         </form>
 

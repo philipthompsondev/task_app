@@ -1,5 +1,10 @@
 <ul wire:sortable="updateTaskOrder" class="mt-4">
-    <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">You can drag and drop a task name to reorder the list.</p>
+    @if($tasks->isEmpty())
+        <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">There are currently no tasks, you can create a task above.</p>
+    @else
+        <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">You can drag and drop a task name to reorder the list.</p>
+    @endif
+
     @foreach ($tasks as $task)
         <li wire:sortable.item="{{ $task->id }}"
             wire:key="task-{{ $task->id }}"

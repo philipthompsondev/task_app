@@ -9,6 +9,7 @@
                 name="name"
                 value="{{ old('name', $task->name) }}"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
             @if(!$projects->isEmpty())
                 <label for="selectProject" class="block mt-4 mb-2 text-sm font-medium text-gray-900 dark:text-white">Assign task to project:</label>
@@ -30,7 +31,9 @@
                 <p class="block my-2 text-sm font-medium text-gray-900 dark:text-white">There are currently no projects, you can create a project in the project tab.</p>
             @endif
 
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <p class="block mb-2 text-sm font-medium text-gray-900 mt-4">Created at {{ $task->created_at }}</p>
+            <p class="block mb-2 text-sm font-medium text-gray-900">Updated at {{ $task->updated_at }}</p>
+
             <div class="mt-4 space-x-2">
                 <x-primary-button>{{ __('Save Task') }}</x-primary-button>
                 <a href="{{ route('tasks.index') }}">{{ __('Cancel') }}</a>
