@@ -1,8 +1,9 @@
 ## General info
-A simple app that allows you to create tasks and projects. You can also assign a color and tasks to each project.
-
-The following libraries were used:
-[LiveWire Sortable](https://github.com/livewire/sortable).
+A simple app that allows you to create tasks and projects.
 
 ### Setup
-By default, the app will connect to Mysql.
+The provided .env.example file connects to MySql by default.
+
+Once you've created your .env file run `composer install`, `php artisan migrate` and `npm install`.
+
+To start the app run `php artisan serve` and `npm run dev` in separate tabs.
