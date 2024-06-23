@@ -39,7 +39,9 @@ class TaskController extends Controller
 
         $task = new Task();
         $task->name = $validated['name'];
-        $task->project_id = $validated['project_id'];
+        if (isset($validated['project_id'])) {
+            $task->project_id = $validated['project_id'];
+        }
         $task->priority = Task::max('priority') + 1;
 
         $task->save();
