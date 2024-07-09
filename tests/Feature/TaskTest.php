@@ -76,6 +76,9 @@ class TaskTest extends TestCase
         $this->assertSame('Edit Test', $editedTask->name);
     }
 
+    /**
+     * @throws \JsonException
+     */
     public function testTaskDestroy()
     {
         $task = Task::factory()->create();

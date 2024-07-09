@@ -3,13 +3,12 @@
 namespace Database\Factories;
 
 use App\Models\Project;
-use App\Models\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Task>
+ * @extends Factory<Project>
  */
-class TaskFactory extends Factory
+class ProjectFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,10 +19,9 @@ class TaskFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'priority' => fake()->unique()->randomDigit(),
+            'color' => fake()->hexColor(),
             'created_at' => now(),
-            'updated_at' => now(),
-            'project_id' => Project::factory()
+            'updated_at' => now()
         ];
     }
 }
